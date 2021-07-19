@@ -1,11 +1,17 @@
+CADASTRAR_RECEITA = 1
+VER_RECEITAS = 2
+BUSCAR_RECEITA = 3
+SAIR = 4
+
 def bem_vindo()
   puts "Bemvindo ao Cookbook, sua rede social de receitas"
 end
 
 def menu_opcoes()
-  puts "[1] Cadastrar uma receita"
-  puts "[2] Ver todas as receitas"
-  puts "[3] sair"
+  puts "[#{CADASTRAR_RECEITA}] Cadastrar uma receita"
+  puts "[#{VER_RECEITAS}] Ver todas as receitas"
+  puts "[#{BUSCAR_RECEITA}] Buscar receita"
+  puts "[#{SAIR}] sair"
  
   print "Escolha uma opção: "
   return gets.to_i()
@@ -29,20 +35,40 @@ def imprimir_receitas(r)
       puts"#{receita[:nome]} - #{receita[:tipo]}"
   end
   puts
+  if r.empty?
+    puts"----------Nenhuma receita cadastrada---------"
+    puts
+  end
 end
 
+def buscar_receita(r)
+  puts"Escrever palavra chave: "
+  palavra_chave = gets.chomp()
+  r.each do |receitas|
+    puts
+    puts "procurando receitas com a palavra #{palavra_chave}\n...aguarde, esta função está em manutenção, enquanto isso cadrastre mais receitas ;)..."
+  end
+  puts
+  if r.empty?
+    puts"----------Nenhuma receita cadastrada---------"
+    puts
+  end
+end
 bem_vindo()
 
 receitas = []
 
 opcao = menu_opcoes()
 
-while(opcao != 3) do
-  if(opcao == 1)
+loop do
+  if(opcao == CADASTRAR_RECEITA)
     receitas << inserir_receita()
-  elsif(opcao == 2)
+  elsif(opcao == VER_RECEITAS)
     imprimir_receitas(receitas)
-    receitas
+  elsif(opcao == SAIR)
+    break
+  elsif(opcao == BUSCAR_RECEITA)
+    buscar_receita(receitas)
   else
     puts"Opção inválida"
   end
