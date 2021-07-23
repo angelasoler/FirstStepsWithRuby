@@ -22,9 +22,6 @@ class Funcionario
   end 
   
   def imprime()
-    each do |atributos|
-      puts " #{atributos} "
-      puts "-"
-    end
+    puts "Funcionário #{@nome} - Telefone #{@telefone} - Codigo #{@codigo_funcionario} - Ferias #{@ferias}"
   end
 end

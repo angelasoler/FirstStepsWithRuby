@@ -5,4 +5,8 @@ class Professor < Funcionario
     super(nome, telefone, codigo_funcionario)
     @disciplina = disciplina
   end
+
+  # def imprime()
+  #   puts"@disciplina"
+  # end
 end
